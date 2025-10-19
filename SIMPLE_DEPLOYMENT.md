@@ -10,7 +10,7 @@ Since Pipecat Cloud CLI isn't available, here's a simpler approach using alterna
 
 2. **Create New Web Service**:
    - Click "New +" → "Web Service"
-   - Connect your GitHub repository
+   - Connect your GitHub repository: `https://github.com/ai-tech-karthik/r2c2-voice-coach`
    - Or use "Deploy from Git URL"
 
 3. **Configure Service**:
@@ -19,25 +19,28 @@ Since Pipecat Cloud CLI isn't available, here's a simpler approach using alterna
    Region: Choose closest to you
    Branch: main
    Root Directory: server
-   Runtime: Python 3
-   Build Command: pip install -r requirements.txt
-   Start Command: python bot.py --transport daily
+   Environment: Docker
    ```
+   
+   **Important**: Select "Docker" as the environment (not Python). The Dockerfile is already configured.
 
-4. **Add Environment Variables**:
+4. **Add Environment Variables** in Render dashboard:
    ```
    DAILY_API_KEY=your_daily_api_key
    GOOGLE_API_KEY=your_gemini_api_key
    DATABASE_PATH=./data/r2c2_coach.db
-   API_PORT=7860
-   API_HOST=0.0.0.0
+   PORT=7860
    ```
 
 5. **Deploy**: Click "Create Web Service"
+   - First build takes 5-10 minutes
+   - Subsequent builds are faster
 
 6. **Get Your Bot URL**: 
    - After deployment, you'll get a URL like: `https://r2c2-voice-coach-backend.onrender.com`
    - Your bot start endpoint: `https://r2c2-voice-coach-backend.onrender.com/start`
+
+**Note**: The Dockerfile has been updated to use a standard Python base image that works across all platforms.
 
 ### Frontend Deployment (5 minutes)
 
