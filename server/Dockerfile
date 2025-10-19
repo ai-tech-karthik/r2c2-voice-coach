@@ -26,7 +26,14 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-install-project --no-dev
 
 # Copy the application code
-COPY ./bot.py bot.py
+COPY ./bot.py ./
+COPY ./r2c2 ./r2c2
+COPY ./api ./api
+COPY ./database ./database
+COPY ./processors ./processors
+
+# Create data directory for database
+RUN mkdir -p ./data
 
 # Expose port
 EXPOSE 7860
