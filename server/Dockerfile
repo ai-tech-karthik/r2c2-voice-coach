@@ -35,8 +35,11 @@ COPY ./processors ./processors
 # Create data directory for database
 RUN mkdir -p ./data
 
+# Set host to 0.0.0.0 for external access (required for Render)
+ENV HOST=0.0.0.0
+
 # Expose port
 EXPOSE 7860
 
-# Run the application
-CMD ["uv", "run", "python", "bot.py"]
+# Run the application with host binding
+CMD ["uv", "run", "python", "bot.py", "--host", "0.0.0.0"]
