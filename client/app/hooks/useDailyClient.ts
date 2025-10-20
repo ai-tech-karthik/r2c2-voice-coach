@@ -30,7 +30,7 @@ export const useDailyClient = (config?: DailyClientConfig) => {
       if (!audioElementRef.current) {
         audioElementRef.current = document.createElement('audio');
         audioElementRef.current.autoplay = true;
-        audioElementRef.current.playsInline = true;
+        audioElementRef.current.setAttribute('playsinline', 'true');
         document.body.appendChild(audioElementRef.current);
         console.log("Audio element created and added to DOM");
       }
