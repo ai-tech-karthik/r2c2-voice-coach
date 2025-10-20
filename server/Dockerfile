@@ -41,5 +41,5 @@ ENV HOST=0.0.0.0
 # Expose port
 EXPOSE 7860
 
-# Run the application with host binding
-CMD ["uv", "run", "python", "bot.py", "--host", "0.0.0.0"]
+# Run the application with host binding and Daily transport
+CMD ["uv", "run", "python", "bot.py", "--transport", "daily", "--host", "0.0.0.0"]
